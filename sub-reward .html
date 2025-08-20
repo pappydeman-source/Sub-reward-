@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe & Get Rewards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #f1f1f1;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff0000, #ff5e00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .channels-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .channel-card {
+            background: #1e1e2e;
+            border-radius: 15px;
+            padding: 25px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .channel-icon {
+            font-size: 4rem;
+            color: #ff0000;
+            margin-bottom: 15px;
+        }
+        
+        .channel-name {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .channel-desc {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+        
+        .subscribe-btn {
+            display: inline-block;
+            background: #ff0000;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .subscribe-btn:hover {
+            background: #cc0000;
+        }
+        
+        .reward-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .reward-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ff9e00;
+        }
+        
+        .reward-text {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        .email-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .email-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px;
+            border-radius: 50px;
+            border: none;
+            background: #0f0f1a;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .submit-btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(90deg, #ff9e00, #ff5e00);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .testimonials {
+            margin: 60px 0;
+        }
+        
+        .testimonials-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #ff9e00;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial-card {
+            background: #1e1e2e;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff9e00, #ff5e00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .reward-section {
+                padding: 25px;
+            }
+            
+            .email-form {
+                flex-direction: column;
+            }
+            
+            .email-input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fab fa-youtube"></i>
+            </div>
+            <h1>Subscribe & Get Rewards</h1>
+            <p class="subtitle">Support these amazing channels and receive exclusive rewards in return!</p>
+        </header>
+        
+        <div class="channels-container">
+            <div class="channel-card">
+                <div class="channel-icon">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <h2 class="channel-name">PappyDeman</h2>
+                <p class="channel-desc">Join PappyDeman for amazing content and community. Gaming, tutorials, and more!</p>
+                <a href="https://youtube.com/@pappydeman?si=r6IlZjKPXQWvIQye" target="_blank" class="subscribe-btn">Subscribe</a>
+            </div>
+            
+            <div class="channel-card">
+                <div class="channel-icon">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <h2 class="channel-name">AndroidMinecraft</h2>
+                <p class="channel-desc">The best Minecraft content for Android users. Tips, mods, and gameplay!</p>
+                <a href="https://www.youtube.com/@AndroidMinecraft-v" target="_blank" class="subscribe-btn">Subscribe</a>
+            </div>
+        </div>
+        
+        <div class="reward-section">
+            <h2 class="reward-title">Claim Your Reward!</h2>
+            <p class="reward-text">Subscribe to both channels above, then enter your email below to receive your exclusive reward. We'll send you a special gift package with digital content and exclusive access!</p>
+            
+            <form class="email-form" id="emailForm">
+                <input type="email" class="email-input" placeholder="Enter your email address" required>
+                <button type="submit" class="submit-btn">Claim Reward</button>
+            </form>
+            
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i> Thank you! Your reward is being processed. Check your email soon.
+            </div>
+        </div>
+        
+        <div class="testimonials">
+            <h2 class="testimonials-title">What People Are Saying</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I received an amazing digital pack after subscribing. The content was totally worth it and the channels are fantastic!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div>John D.</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"This was such a great deal! I found two new channels I love and got cool exclusive content. Win-win!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div>Sarah M.</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The reward was delivered quickly after I subscribed. Both channels produce quality content that I enjoy watching."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TP</div>
+                        <div>Thomas P.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>This is a fan promotion page. ©2025 We are not officially affiliated with YouTube or the channels.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, you would send the email to a server here
+            // For this example, we'll just show the success message
+            
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset the form
+            this.reset();
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+    </script>
+</body>
+</html>
